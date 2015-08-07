@@ -4,9 +4,9 @@
 
 > Parse build blocks in HTML files to replace references and automatically upload to **qiniu** cdn.
 
-Inspired by the grunt plugin [grunt-useref](https://github.com/pajtai/grunt-useref) and [gulp-useref](https://github.com/jonkemp/gulp-useref). It can handle file concatenation but not minification. And it can upload the concatenated file to cdn automatically. Files are then passed down the stream. For minification of assets or other modifications, use [gulp-if](https://github.com/robrich/gulp-if) to conditionally handle specific types of assets.
+Inspired by [grunt-useref](https://github.com/pajtai/grunt-useref) and [gulp-useref](https://github.com/jonkemp/gulp-useref). It can handle file concatenation but not minification. And it can upload the concatenated file to cdn automatically. Files are then passed down the stream. For minification of assets or other modifications, use [gulp-if](https://github.com/robrich/gulp-if) to conditionally handle specific types of assets.
 
-**Note**: lot of code from [gulp-useref](https://github.com/jonkemp/gulp-useref). `gulp-useref` doesn't apply API to manage `js|css` file concatenation. This is why I don't make `gulp-useref` as lib dependency and borrow lot of code.
+**Note**: lot of code from [gulp-useref](https://github.com/jonkemp/gulp-useref). `gulp-useref` doesn't apply a way to manage html file analysis or a callback after html file analysis. This is why I don't make `gulp-useref` as lib dependency and rewrite based on it.
 
 ## Install
 
@@ -45,11 +45,11 @@ More details: <https://github.com/jonkemp/gulp-useref>. All `gulp-useref`'s synt
 <!-- build:<type>(alternate search path) <path> <attrs> -->
 ```
 
-**type** could be either `js`, `css` or `remove`. However, the new `cdn` is added now.
+Before, **type** could be either `js`, `css` or `remove`. And the **new `cdn`** is added now.
 
-When you use `cdn` as the type, no need to write `js` or `css` anymore. The plugin will detect it automatically, and it will do the work as expected when you use `js|css`. Make sure `cdn` could not replace `remove`.
+When you use `cdn` as the type, no need to write `js` or `css` anymore. The plugin will detect it automatically, and it will do the work as expected when you use `js|css`.
 
-What's more, the plugin will upload the concatenated file to `qiniu` cdn.
+**And with the `cdn` type, the plugin will upload the concatenated file to `qiniu` cdn.**
 
 An example of this in completed form can be seen below:
 
@@ -151,13 +151,13 @@ The above two are all about `key`. `Key` is defined by [Qiniu](http://developer.
 
 When `key` is not offered, plugin will generate the `key`:
 
-```
+```js
 prefix + filename + '-' + md5 + '.' + filetype;
 ```
 
-- prefix --- `options.keyPrefix`
-- md5 --- the md5 string of the file, `options.md5` specify md5's length(after cut).
-- filename, filetype are detected by plugin.
+- `prefix` --- `options.keyPrefix`
+- `md5` --- the md5 string of the file, `options.md5` specify md5's length(after cut).
+- `filename`, `filetype` are offered by plugin.
 
 ### stream.restore()
 
