@@ -1,0 +1,50 @@
+{
+  "name": "gulp-useref-cdn",
+  "version": "0.1.0",
+  "description": "Parse build blocks in HTML files to replace references and automatically upload to qiniu cdn.",
+  "author": "creeperyang <pashanhu6@hotmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:creeperyang/gulp-useref-cdn.git"
+  },
+  "main": "dist/cdn.js",
+  "keywords": [
+    "gulpplugin",
+    "qiniu",
+    "useref",
+    "cdn",
+    "html",
+    "scripts",
+    "css",
+    "concat"
+  ],
+  "scripts": {
+    "lint": "gulp lint",
+    "test": "gulp test"
+  },
+  "dependencies": {
+    "brace-expansion": "^1.1.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-util": "^3.0.6",
+    "gulp-if": "^1.2.5",
+    "is-relative-url": "^1.0.0",
+    "lodash": "^3.10.0",
+    "node-useref": "^0.3.15",
+    "qiniu": "^6.1.8",
+    "through2": "^2.0.0",
+    "vinyl-fs": "^1.0.0"
+  },
+  "devDependencies": {
+    "babel": "^5.8.21",
+    "babel-eslint": "^4.0.5",
+    "gulp": "^3.9.0",
+    "gulp-babel": "^5.2.0",
+    "gulp-clean": "^0.3.1",
+    "gulp-eslint": "^1.0.0",
+    "gulp-mocha": "^2.1.3",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^1.2.0",
+    "should": "^7.0.2"
+  }
+}
